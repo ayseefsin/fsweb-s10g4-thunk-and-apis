@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import {
   FAV_ADD,
   FAV_REMOVE,
@@ -24,10 +25,11 @@ const initial = {
   error: null,
   loading: true,
 };
-
+let toaster;
 export function myReducer(state = initial, action) {
   switch (action.type) {
     case FAV_ADD:
+      toast.success("Successfuly added to favs");
       const updatedFavs = { ...state, favs: [...state.favs, action.payload] };
       writeFavsToLocalStorage(updatedFavs);
       return updatedFavs;
@@ -41,12 +43,15 @@ export function myReducer(state = initial, action) {
       return remainingFavsState;
 
     case FETCH_SUCCESS:
+      toast.success("Successfuly fetched");
       return { ...state, loading: false, current: action.payload, error: null };
 
     case FETCH_LOADING:
+      toast("Please Wait!");
       return { ...state, loading: true, current: null };
 
     case FETCH_ERROR:
+      toast.error("An error occured");
       return { ...state, loading: false, error: action.payload, current: null };
 
     case GET_FAVS_FROM_LS:

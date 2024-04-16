@@ -22,6 +22,7 @@ export const removeFav = (id) => {
 };
 
 export const fetchAnother = () => (dispatch) => {
+  dispatch({ type: FETCH_LOADING });
   axios
     .get("https://official-joke-api.appspot.com/random_joke")
     .then(function (response) {
