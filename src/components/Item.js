@@ -7,6 +7,7 @@ function Item({ data }) {
       onClick={() => setShowPunchline(!showPunchline)}
       className="flip shadow-md bg-white text-center"
     >
+      Show Punchline:{showPunchline.toString()}
       <div className={showPunchline ? "flip-content" : ""}>
         <p className="flip-front text-2xl p-10">{data.setup}</p>
         <p className=" flip-back text-2xl p-10">{data.punchline}</p>

@@ -22,7 +22,7 @@ code {
   height: 250px;
   text-align: center;
   perspective: 600px;
-  float: left;
+  /* float: left; */
   margin: 30px;
 }
 .flip-content {
