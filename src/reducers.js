@@ -7,13 +7,6 @@ import {
   GET_FAVS_FROM_LS,
 } from "./actions";
 
-const initial = {
-  favs: [],
-  current: null,
-  error: null,
-  loading: true,
-};
-
 function writeFavsToLocalStorage(state) {
   localStorage.setItem("s10g4", JSON.stringify(state.favs));
 }
@@ -21,6 +14,13 @@ function writeFavsToLocalStorage(state) {
 function readFavsFromLocalStorage() {
   return JSON.parse(localStorage.getItem("s10g4"));
 }
+const initial = {
+  //short circuiting
+  favs: readFavsFromLocalStorage() || [],
+  current: null,
+  error: null,
+  loading: true,
+};
 
 export function myReducer(state = initial, action) {
   switch (action.type) {
