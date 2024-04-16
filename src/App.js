@@ -4,7 +4,7 @@ import Item from "./components/Item";
 import FavItem from "./components/FavItem";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { FAV_ADD, addFav, fetchAnother } from "./actions";
+import { CLEAR_FAVS, FAV_ADD, addFav, fetchAnother } from "./actions";
 
 export default function App() {
   const { loading, current, favs } = useSelector((state) => state);
@@ -19,6 +19,9 @@ export default function App() {
   }, []);
   function fetchNew() {
     dispatch(fetchAnother());
+  }
+  function clearFavs() {
+    dispatch({ type: CLEAR_FAVS });
   }
   return (
     <div className="wrapper max-w-xl mx-auto px-4">
@@ -59,6 +62,12 @@ export default function App() {
               className="select-none px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white"
             >
               Favorilere ekle
+            </button>
+            <button
+              onClick={clearFavs}
+              className="select-none px-4 py-2 bg-red-700 hover:bg-red-600 text-white"
+            >
+              Favorilerin hepsini sil
             </button>
           </div>
         </Route>

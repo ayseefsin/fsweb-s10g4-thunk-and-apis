@@ -5,12 +5,15 @@ import {
   FETCH_LOADING,
   FETCH_ERROR,
   GET_FAVS_FROM_LS,
+  CLEAR_FAVS,
 } from "./actions";
 
 function writeFavsToLocalStorage(state) {
   localStorage.setItem("s10g4", JSON.stringify(state.favs));
 }
-
+function clearFavsFromLocalStorage(state) {
+  localStorage.removeItem("s10g4");
+}
 function readFavsFromLocalStorage() {
   return JSON.parse(localStorage.getItem("s10g4"));
 }
@@ -48,6 +51,9 @@ export function myReducer(state = initial, action) {
 
     case GET_FAVS_FROM_LS:
       return { ...state };
+    case CLEAR_FAVS:
+      clearFavsFromLocalStorage();
+      return { ...state, favs: [] };
 
     default:
       return state;
