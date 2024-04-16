@@ -44,11 +44,11 @@ code {
   backface-visibility: hidden;
   background-color: lightpink;
   color: purple;
-  border: 6px solid pink;
+  border: 6px solid purple;
   box-shadow: 6px, 6px purple;
 }
 .flip-back {
   transform: rotateY(180deg);
   border: 6px solid purple;
-  box-shadow: 6px 6px pink;
+  box-shadow: 6px 6px purple;
 }
